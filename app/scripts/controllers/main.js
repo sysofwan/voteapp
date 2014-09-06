@@ -8,10 +8,8 @@
  * Controller of the voteappApp
  */
 angular.module('voteappApp')
-  .controller('MainCtrl', function($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function($scope, $location) {
+    $scope.go = function(path) {
+    	$location.path(path);
+    };
   });
