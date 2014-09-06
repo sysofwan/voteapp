@@ -15,7 +15,8 @@ angular.module('voteappApp')
       var sessionNode = firebaseref.child(childName);
       var sync = $firebase(sessionNode);
       var voteChangeCallback = angular.noop;
-      var voteResults = sync.$asObject();
+      var graphDataChangedCallback = angular.noop;
+      var nodeData = sync.$asObject();
 
       var sessionExists = function() {
         var deferred = $q.defer();
@@ -33,43 +34,48 @@ angular.module('voteappApp')
       var createSession = function() {
         var voteNode = firebaseref.child('voteSessions');
         var obj = {};
-        obj[sessionId] = 0;
+        obj[sessionId] = {
+          info: {
+            choices: ['A', 'B', 'C', 'D']
+          }
+        };
         voteNode.update(obj);
       };
 
       var getSessionSummary = function() {
-        return voteResults;
+        return nodeData;
       };
 
-      var computeGraphData = function(voteResults) {
-        var filtered = _.reject(voteResults, function(value, key) {
-          console.log(_.isString(key));
-          return !key.indexOf('$');
+      var computeGraphData = function(nodeData) {
+        var grouped = _.map(nodeData.info.choices, function(key) {
+          var count = 0;
+          if (nodeData.votes) {
+            count = _.reduce(nodeData.votes, function(memo, vote) {
+              return vote === key ? memo + 1 : memo;
+            }, 0);
+          }
+          return [key, count];
         });
-        var grouped = _.groupBy(filtered, function(choice) {
-          return choice;
-        });
-        return _.map(grouped, function(value, key) {
-          var obj = {};
-          obj[key] = value.length;
-          return obj;
+        return _.sortBy(grouped, function(arr) {
+          return arr[0];
         });
       };
 
-      voteResults.$watch(function() {
+      nodeData.$watch(function() {
         $rootScope.$apply(function() {
-          voteChangeCallback(voteResults);
+          var graphData = computeGraphData(nodeData);
+          voteChangeCallback(nodeData);
+          graphDataChangedCallback(graphData);
         });
-        console.log(computeGraphData(voteResults));
       });
 
       var addVote = function(vote) {
         var obj = {};
         obj[user.getId()] = vote;
-        sessionNode.update(obj);
+        sessionNode.child('votes').update(obj);
       };
 
-      
+
 
       return {
         sessionExists: sessionExists,
@@ -77,6 +83,9 @@ angular.module('voteappApp')
         getSessionSummary: getSessionSummary,
         onVoteResultsChanged: function(callback) {
           voteChangeCallback = callback;
+        },
+        onGraphDataChanged: function(callback) {
+          graphDataChangedCallback = callback;
         },
         addVote: addVote
       };
