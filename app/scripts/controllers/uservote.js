@@ -16,7 +16,7 @@ angular.module('voteappApp')
     sessionNode.once('value', function(data) {
       $scope.$apply(function() {
         console.log(data.val());
-        if (data.val() === null) {
+        if (!data.val()) {
           $location.path('/');
         }
 
