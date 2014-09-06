@@ -13,10 +13,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  padding-top: 100px;
+
   padding-bottom: 20px;
 }
 
+html,body {
+  height: 100%;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -96,6 +99,7 @@ body {
 
   text-align:center;
   line-height: 80px;
+  height: 100%;
   cursor: pointer;
   .col-xs-12{
     padding: 0;
@@ -116,7 +120,7 @@ body {
     background-color: #FF0000;
   }
   :nth-child(3){
-    
+
     background-color: #009933;
   }
   :nth-child(4){
@@ -130,5 +134,17 @@ body {
   border-radius: 0;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
+
+.rowfat {
+  &:hover{
+    background-color: #669999;
+  }
+  display: table-cell;
+  height:100vh;
+  vertical-align: middle;
+}
 
 
