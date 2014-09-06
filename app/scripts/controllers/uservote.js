@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name voteappApp.controller:MainCtrl
+ * @name voteappApp.controller:UservoteCtrl
  * @description
- * # MainCtrl
+ * # UservoteCtrl
  * Controller of the voteappApp
  */
 angular.module('voteappApp')
-  .controller('MainCtrl', function($scope) {
+  .controller('UservoteCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

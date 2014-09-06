@@ -28,6 +28,14 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/summary/:sessionId', {
+        templateUrl: 'views/votesummary.html',
+        controller: 'VotesummaryCtrl'
+      })
+      .when('/vote/:sessionId', {
+        templateUrl: 'views/uservote.html',
+        controller: 'UservoteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
