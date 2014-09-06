@@ -8,7 +8,7 @@
  * Factory in the voteappApp.
  */
 angular.module('voteappApp')
-  .factory('voteService', function(firebaseref, _, $q, $firebase, $rootScope, user) {
+  .factory('voteService', function(firebaseref, _, $q, $firebase, $rootScope, user, $timeout) {
     return function(sessionId) {
 
       var childName = 'voteSessions/' + sessionId;
@@ -62,7 +62,7 @@ angular.module('voteappApp')
       };
 
       nodeData.$watch(function() {
-        $rootScope.$apply(function() {
+        $timeout(function() {
           var graphData = computeGraphData(nodeData);
           voteChangeCallback(nodeData);
           graphDataChangedCallback(graphData);

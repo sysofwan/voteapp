@@ -19,7 +19,8 @@
     "underscore": "~1.7.0",
     "flot": "~0.8.3",
     "flot.tooltip": "~0.8.4",
-    "metro-ui-css": "~2.0.23"
+    "metro-ui-css": "~2.0.23",
+    "jquery-ui": "~1.11.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
