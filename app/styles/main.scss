@@ -3,6 +3,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -12,7 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  padding-top: 100px;
   padding-bottom: 20px;
 }
 
@@ -92,9 +93,14 @@ body {
 }
 
 .vote-field {
+
   text-align:center;
   line-height: 80px;
   cursor: pointer;
+  .col-xs-12{
+    padding: 0;
+    width: 100%;
+  }
   /*> div{
     border-radius: 10px;
   }
@@ -117,4 +123,12 @@ body {
     background-color: #FFFF66;
   }
 }
+
+/* Custom styling to overide bootstrap */
+.btn {
+  border: none;
+  border-radius: 0;
+}
+
+
 

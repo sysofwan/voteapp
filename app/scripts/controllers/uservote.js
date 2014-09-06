@@ -15,7 +15,6 @@ angular.module('voteappApp')
       if (!exists) {
         $location.path('/');
       }
-
       $scope.onVote = voteSession.addVote;
     });
 

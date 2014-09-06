@@ -39,6 +39,10 @@ angular.module('voteappApp')
         console.log($scope.voteCount);
 
         $scope.myChartOptions = {
+        	yaxis: {
+        		min: 0,
+        		tickDecimals: 0
+        	},
           xaxis: {
             ticks: ticks
           },
