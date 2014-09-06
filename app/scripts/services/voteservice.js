@@ -70,12 +70,18 @@ angular.module('voteappApp')
       });
 
       var addVote = function(vote) {
+        if (nodeData.info.stopped) {
+          return;
+        }
         var obj = {};
         obj[user.getId()] = vote;
         sessionNode.child('votes').update(obj);
       };
 
-
+      var stopSession = function() {
+        nodeData.info.stopped = true;
+        nodeData.$save();
+      };
 
       return {
         sessionExists: sessionExists,
@@ -87,7 +93,8 @@ angular.module('voteappApp')
         onGraphDataChanged: function(callback) {
           graphDataChangedCallback = callback;
         },
-        addVote: addVote
+        addVote: addVote,
+        stopSession: stopSession
       };
     };
   });

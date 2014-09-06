@@ -135,7 +135,7 @@ html,body {
 }
 
 .stats-wrapper {
-  margin: 0 30px;
+  margin: 30px 30px;
 }
 
 .stats-info {
@@ -146,6 +146,10 @@ html,body {
     font-size: 40px;
     color: blue;
     text-align: center;
+  }
+
+  .stop-btn {
+    width: 90%;
   }
 }
 

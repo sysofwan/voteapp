@@ -67,6 +67,8 @@ angular.module('voteappApp')
           return memo + arr[1];
         }, 0);
 
+        $scope.stopSession = voteSession.stopSession;
+
       });
 
       $interval(function() {
