@@ -93,9 +93,14 @@ body {
 }
 
 .vote-field {
+
   text-align:center;
   line-height: 80px;
   cursor: pointer;
+  .col-xs-12{
+    padding: 0;
+    width: 100%;
+  }
   /*> div{
     border-radius: 10px;
   }
