@@ -17,9 +17,7 @@ angular.module('voteappApp')
       $scope.$apply(function() {
         console.log(data.val());
         if (data.val() === null) {
-          console.log('called');
-          $location.path('/hnvj/');
-          console.log($location.path());
+          $location.path('/');
         }
 
         $scope.onVote = function(vote) {
