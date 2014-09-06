@@ -1,8 +1,15 @@
 <div class="container">
-  <h1> VoteApp <small> The app, to vote. Duh. </small></h1>
-  <p>
-    <button type="button" class="btn btn-primary btn-block" ng-click="go('/summary/:sessionId')"> Create Session </button>
-    <button type="button" class="btn btn-primary btn-block" ng-click="go('/vote/:sessionId')"> Join Session </button> 
-  </p>
+	<h1> VoteApp <small> The app, to vote. Duh. </small></h1>
+	<div class="sessionForm" ng-hide="notVisible">
+    	<label for="sessionId">Session Id: </label>
+    	<input type="text" ng-model="sessionId">
+  	</div>
+  	
+  	<button type="button" class="btn btn-primary btn-block" ng-click="go('/summary/')"> Create Session </button>
+    <button type="button" class="btn btn-primary btn-block" ng-click="go('/vote/')"> Join Session </button> 
+  	
+  	
+    
+  
 </div>
 
