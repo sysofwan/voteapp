@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-flot'
   ])
   .config(function ($routeProvider) {
     $routeProvider
