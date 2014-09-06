@@ -7,6 +7,6 @@
  * # firebaseref
  * Factory in the voteappApp.
  */
-angular.module('voteappApp').factory('firebaseref', function () {
-  return new window.Firebase('https://voteapp.firebaseio.com/');
+angular.module('voteappApp').factory('firebaseref', function (Firebase) {
+  return new Firebase('https://voteapp.firebaseio.com/');
 });

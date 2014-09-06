@@ -43,4 +43,6 @@ angular
       });
   })
 
-  .constant('_', window._);
+  .constant('_', window._)
+
+  .constant('Firebase', window.Firebase);

@@ -12,16 +12,17 @@ angular.module('voteappApp')
   .controller('VotesummaryCtrl', function($scope, $routeParams, voteService, _, $interval) {
 
     var ticks,
-      voteSession = voteService($routeParams.sessionId),
-      timer = 0;
+      voteSession = voteService($routeParams.sessionId);
 
-    $scope.timer = '0:00';
+    $scope.timer = '-:--';
 
     voteSession.sessionExists().then(function(exists) {
       if (!exists) {
         voteSession.createSession();
       }
       voteSession.onGraphDataChanged(function(results) {
+
+        $scope.nodeData = voteSession.getSessionSummary();
         $scope.myData = _.map(results, function(arr, index) {
           return {
             label: arr[0],
@@ -68,11 +69,12 @@ angular.module('voteappApp')
         }, 0);
 
         $scope.stopSession = voteSession.stopSession;
+        $scope.sessionStopped = voteService.sessionStopped;
 
       });
 
       $interval(function() {
-        timer += 1;
+        var timer = voteSession.getSecondsLive();
         var sec = timer % 60;
         var secStr = sec < 10 ? '0' + sec : sec;
         var minute = Math.floor(timer/60);

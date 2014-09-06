@@ -8,7 +8,7 @@
  * Factory in the voteappApp.
  */
 angular.module('voteappApp')
-  .factory('voteService', function(firebaseref, _, $q, $firebase, $rootScope, user, $timeout) {
+  .factory('voteService', function(firebaseref, _, $q, $firebase, $rootScope, user, $timeout, Firebase) {
     return function(sessionId) {
 
       var childName = 'voteSessions/' + sessionId;
@@ -36,7 +36,8 @@ angular.module('voteappApp')
         var obj = {};
         obj[sessionId] = {
           info: {
-            choices: ['A', 'B', 'C', 'D']
+            choices: ['A', 'B', 'C', 'D'],
+            timestamp: Firebase.ServerValue.TIMESTAMP
           }
         };
         voteNode.update(obj);
@@ -79,8 +80,27 @@ angular.module('voteappApp')
       };
 
       var stopSession = function() {
-        nodeData.info.stopped = true;
-        nodeData.$save();
+        if (!nodeData.info.stopped) {
+          nodeData.info.stopped = true;
+          nodeData.info.stoppedTime = Firebase.ServerValue.TIMESTAMP;
+          nodeData.$save();
+        }
+      };
+
+      var sessionStopped = function() {
+        console.log(nodeData.info.stopped);
+        return nodeData.info.stopped;
+      };
+
+      var getSecondsLive = function() {
+        var created = nodeData.info.timestamp,
+            time;
+        if (sessionStopped()) {
+          time = nodeData.info.stoppedTime;
+        } else {
+          time = new Date().getTime();
+        }
+        return Math.floor((time - created) / 1000);
       };
 
       return {
@@ -94,7 +114,9 @@ angular.module('voteappApp')
           graphDataChangedCallback = callback;
         },
         addVote: addVote,
-        stopSession: stopSession
+        stopSession: stopSession,
+        getSecondsLive: getSecondsLive,
+        sessionStopped: sessionStopped
       };
     };
   });
