@@ -23,7 +23,7 @@ angular.module('voteappApp')
         $scope.onVote = function(vote) {
           $scope.vote = vote;
           var obj = {};
-          obj[user.name] = vote;
+          obj[user.getId()] = vote;
           sessionNode.update(obj);
         };
       }, function(error) {

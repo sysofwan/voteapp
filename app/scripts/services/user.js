@@ -13,7 +13,7 @@ angular.module('voteappApp')
     var uIdKey = 'uId';
 
     var createUserId = function() {
-      var userId = (Math.random() % 1000000000000).toString();
+      var userId = ((Math.floor(Math.random() * (1000000000000))))  + 'uid';
       $cookieStore.put(uIdKey, userId);
       return userId;
     };
