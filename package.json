@@ -2,7 +2,7 @@
   "name": "voteapp",
   "version": "0.0.0",
   "dependencies": {
-    "angular-flot": "0.0.5"
+   
   },
   "devDependencies": {
     "grunt": "^0.4.1",
