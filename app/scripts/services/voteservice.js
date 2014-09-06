@@ -88,7 +88,6 @@ angular.module('voteappApp')
       };
 
       var sessionStopped = function() {
-        console.log(nodeData.info.stopped);
         return nodeData.info.stopped;
       };
 
