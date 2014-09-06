@@ -9,7 +9,8 @@
  */
 angular.module('voteappApp')
   .controller('MainCtrl', function($scope, $location) {
-    $scope.go = function(path) {
-    	$location.path(path);
-    };
+  	$scope.go = function(path) {
+  		$location.path(path + $scope.sessionId);
+  	};
+  	
   });
