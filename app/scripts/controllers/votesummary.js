@@ -9,10 +9,13 @@
  */
 
 angular.module('voteappApp')
-  .controller('VotesummaryCtrl', function($scope, $routeParams, voteService, _) {
+  .controller('VotesummaryCtrl', function($scope, $routeParams, voteService, _, $interval) {
 
     var ticks,
-      voteSession = voteService($routeParams.sessionId);
+      voteSession = voteService($routeParams.sessionId),
+      timer = 0;
+
+    $scope.timer = '0:00';
 
     voteSession.sessionExists().then(function(exists) {
       if (!exists) {
@@ -31,12 +34,6 @@ angular.module('voteappApp')
         ticks = _.map(results, function(arr, index) {
           return [index + 1, arr[0]];
         });
-
-        $scope.voteCount = _.reduce(results, function(memo, arr) {
-          return memo + arr[1];
-        }, 0);
-
-        console.log($scope.voteCount);
 
         $scope.myChartOptions = {
         	yaxis: {
@@ -65,7 +62,20 @@ angular.module('voteappApp')
 
           }
         };
+
+        $scope.voteCount = _.reduce(results, function(memo, arr) {
+          return memo + arr[1];
+        }, 0);
+
       });
+
+      $interval(function() {
+        timer += 1;
+        var sec = timer % 60;
+        var secStr = sec < 10 ? '0' + sec : sec;
+        var minute = Math.floor(timer/60);
+        $scope.timer = minute + ':' + secStr;
+      }, 1000);
     });
 
   });

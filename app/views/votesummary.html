@@ -1,7 +1,29 @@
-<p>This is the votesummary view.</p>
-
-	<div style="width:600px;height:400px">
-	<flot dataset="myData" options="myChartOptions" style="height:100px;">
-	</flot>
+<div class="row stats-wrapper">
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">Vote stats</div>
+			<div class="panel-body">
+				<div style="height:400px">
+					<flot dataset="myData" options="myChartOptions" style="height:100px;"></flot>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 stats-info">
+		<div class="panel panel-default pull-left">
+			<div class="panel-heading">Vote count</div>
+			<div class="panel-body">
+				{{ voteCount }}
+			</div>
+		</div>
+		<div class="panel panel-default pull-left">
+			<div class="panel-heading">Timer</div>
+			<div class="panel-body">
+				{{ timer }}
+			</div>
+		</div>
+		<button type="button" class="btn btn-default pull-left btn-lg">Stop session</button>
+		<div class="clearfix"></div>
+	</div>
 </div>
 

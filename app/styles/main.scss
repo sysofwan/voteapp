@@ -125,9 +125,24 @@ body {
 }
 
 /* Custom styling to overide bootstrap */
-.btn {
+.flat-btn {
   border: none;
   border-radius: 0;
+}
+
+.stats-wrapper {
+  margin: 0 30px;
+}
+
+.stats-info {
+  > div {
+    width: 90%;
+  }
+  .panel-body {
+    font-size: 40px;
+    color: blue;
+    text-align: center;
+  }
 }
 
 
