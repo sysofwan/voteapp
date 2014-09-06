@@ -32,6 +32,12 @@ angular.module('voteappApp')
           return [index + 1, arr[0]];
         });
 
+        $scope.voteCount = _.reduce(results, function(memo, arr) {
+          return memo + arr[1];
+        }, 0);
+
+        console.log($scope.voteCount);
+
         $scope.myChartOptions = {
           xaxis: {
             ticks: ticks
