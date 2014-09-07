@@ -1,6 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "metro-ui-css/css/metro-bootstrap-responsive.css";
+@import "metro-ui-css/css/metro-bootstrap.css";
 // endbower
 
 
@@ -162,8 +164,9 @@ html,body {
     background-color: #669999;
   }
   display: table-cell;
-  height:100vh;
+  height:50vh;
   vertical-align: middle;
+  text-align: center;
 }
 
 .navbar-main {
