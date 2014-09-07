@@ -138,7 +138,9 @@ angular.module('voteappApp')
       };
 
       var getUserVote = function() {
-        return nodeData.votes[user.getId()];
+        if (nodeData.votes) {
+          return nodeData.votes[user.getId()];
+        }
       };
 
       return {
