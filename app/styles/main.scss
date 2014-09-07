@@ -5,7 +5,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 .selected {
-  opacity: 0.5;
+  background-color: #2B75AD !important;
+  color: white !important;
 }
 
 .browsehappy {
@@ -206,6 +207,11 @@ body {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
+
+  h1 {
+    color: white;
+    margin-bottom: 15px;
+  }
 }
 
 .stats-info {
@@ -218,7 +224,7 @@ body {
     > div {
       font-size: 40px;
       font-weight: bold;
-      color: rgb(75, 75, 75);
+      color: #616161;
       text-align: center;
 
       &.top {
@@ -256,28 +262,44 @@ body {
 #flotTip {
   font-size:20px;}
 
-.navbar-brand{
- padding:0px;
-}
+  .navbar-brand{
+   padding:0px;
+ }
 
-img .logo{
+ img .logo{
   padding: 1px;
   padding-bottom: 10px;
-   vertical-align: middle;
-height: 35px;
-padding-top: 5px;
+  vertical-align: middle;
+  height: 35px;
+  padding-top: 5px;
 
 }
 
 .displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0.3;
-    }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.3;
+}
 
 .aboutlogo{
   padding-bottom:20px;
 }
 
+
+.user-vote {
+  .btn {
+    margin:20px;
+    width: 123px;
+    height: 161px;
+    font-size: 60px;
+    color: #142E40;
+    background-color: white;
+
+  }
+
+  
+    
+  
+}
 

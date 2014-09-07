@@ -24,12 +24,18 @@
       }
 
       $scope.voteNode = voteSession.getChoices();
+      $scope.curChoice = voteSession.getUserVote();
       $scope.onVote = function(choice) {
         voteSession.addVote(choice);
         $scope.curChoice = choice;
       };
 
     });
+  });
+
+  $scope.$on('$destroy', function() {
+    voteSession.onVoteResultsChanged(angular.noop);
+    voteSession = null;
   });
 
 });

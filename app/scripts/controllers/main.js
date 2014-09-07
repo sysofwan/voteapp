@@ -11,7 +11,7 @@ angular.module('voteappApp')
   .controller('MainCtrl', function($scope, $location, $routeParams) {
     $scope.error = $routeParams.error;
   	$scope.go = function(path) {
-  		$location.path(path + $scope.sessionId);
+  		$location.url(path + $scope.sessionId);
   	};
   	
   });
