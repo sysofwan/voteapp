@@ -1,8 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-@import "metro-ui-css/css/metro-bootstrap-responsive.css";
-@import "metro-ui-css/css/metro-bootstrap.css";
 // endbower
 
 
@@ -136,25 +134,6 @@ html,body {
   border-radius: 0;
 }
 
-.stats-wrapper {
-  margin: 30px 30px;
-}
-
-.stats-info {
-  > div {
-    width: 90%;
-  }
-  .panel-body {
-    font-size: 40px;
-    color: blue;
-    text-align: center;
-  }
-
-  .stop-btn {
-    width: 90%;
-  }
-}
-
 .navbar {
   margin-bottom: 0;
 }
@@ -213,6 +192,45 @@ html,body {
       width: 48%;
 
     }
+  }
+}
+
+.page-wrapper {
+  width: 100%;
+  background-color: #55acee;
+  color: white;
+  position: absolute;
+
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .internal-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.stats-info {
+  > div {
+    width: 90%;
+  }
+  .panel-body {
+    font-size: 40px;
+    font-weight: bold;
+    color: blue;
+    text-align: center;
+
+    &.top {
+      border-bottom: 1px solid rgb(223, 223, 223);
+    }
+  }
+
+  .stop-btn {
+    width: 90%;
   }
 }
 

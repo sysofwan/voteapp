@@ -15,6 +15,7 @@ angular.module('voteappApp')
     voteSession.sessionExists().then(function(exists) {
       if (!exists) {
         $location.path('/');
+        return;
       }
       $scope.voteNode = voteSession.getChoices();
       $scope.onVote = voteSession.addVote;

@@ -48,6 +48,9 @@ angular.module('voteappApp')
       };
 
       var computeGraphData = function(nodeData) {
+        if (!nodeData.info) {
+          return [];
+        }
         var grouped = _.map(nodeData.info.choices, function(key) {
           var count = 0;
           if (nodeData.votes) {
@@ -103,7 +106,10 @@ angular.module('voteappApp')
       };
 
       var getChoices = function() {
-        return nodeData.info.choices;
+        if (nodeData.info) {
+          return nodeData.info.choices;
+        }
+        return [];
       };
 
       return {
