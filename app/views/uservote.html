@@ -24,9 +24,9 @@
         <h2>Question 1</h2>
  
         <div class="wrapper text-center">
-            <button ng-repeat="choice in voteNode" type="button" class="btn text-uppercase btn-lg">{{choice}}</button>
+            <button ng-repeat="choice in voteNode" type="button" class="btn text-uppercase btn-lg" ng-class="{'selected':curChoice==choice}" ng-click="onVote(choice)">{{choice}}</button>
  
-    </div>
+    	</div>
  
 
 
@@ -120,6 +120,6 @@
 		</div>
 		<div class="col-md-3 rowfat" ng-click="onVote('D')"> 
 			Lorum Ipsum
-		</div>
+		</div>-->
 	</div>
-</div> -->
+</div> 

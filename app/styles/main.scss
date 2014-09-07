@@ -4,6 +4,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 
+.selected {
+  opacity: 0.5;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -231,4 +235,13 @@ body {
     width: 90%;
   }
 }
+.flot-y-axis div.flot-tick-label{
+  font-size:20px;
+}
 
+.flot-x-axis div.flot-tick-label { 
+  font-size:20px;
+}
+
+#flotTip {
+  font-size:20px;}
