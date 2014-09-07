@@ -102,6 +102,10 @@ angular.module('voteappApp')
         return Math.floor((time - created) / 1000);
       };
 
+      var getChoices = function() {
+        return nodeData.info.choices;
+      };
+
       return {
         sessionExists: sessionExists,
         createSession: createSession,
@@ -115,7 +119,8 @@ angular.module('voteappApp')
         addVote: addVote,
         stopSession: stopSession,
         getSecondsLive: getSecondsLive,
-        sessionStopped: sessionStopped
+        sessionStopped: sessionStopped,
+        getChoices: getChoices
       };
     };
   });

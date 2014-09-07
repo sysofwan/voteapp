@@ -13,7 +13,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-
+  position: relative;
   padding-bottom: 20px;
 }
 
@@ -166,4 +166,50 @@ html,body {
   vertical-align: middle;
 }
 
+.navbar-main {
+  border-radius: 0;
+
+  .navbar-nav > .active > a {
+    background-color: #DCF0FF;
+  }
+}
+
+.main-header {
+  width: 100%;
+  background-color: #55acee;
+  color: white;
+  position: absolute;
+
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  text-align: center;
+
+  h1 {
+    font-size: 60px;
+    margin-top: 50px;
+  }
+  p {
+    font-size: 24px;
+    color: #C1E4FF;
+  }
+
+  .action-chooser {
+    margin: 30px auto;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 8px;
+
+    .form-control {
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      width: 48%;
+
+    }
+  }
+}
 
