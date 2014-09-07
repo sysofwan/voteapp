@@ -14,10 +14,15 @@
 
   voteSession.sessionExists().then(function(exists) {
     if (!exists) {
-      $location.path('/');
+      $location.path('/').search('error', 'vote session does not exist');
       return;
     }
     voteSession.onVoteResultsChanged(function() {
+      if (voteSession.sessionStopped()) {
+        $location.path('/').search('error', 'vote session stopped');
+        return;
+      }
+
       $scope.voteNode = voteSession.getChoices();
       $scope.onVote = voteSession.addVote;
     });

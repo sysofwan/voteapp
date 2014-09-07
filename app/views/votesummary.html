@@ -1,29 +1,29 @@
-<div class="page-wrapper">
-	<div class="internal-wrapper">
-		<h1>Vote data summary</h1>
-		<div class="row">
-			<div class="col-md-9">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<div style="height:500px">
-							<flot dataset="myData" options="myChartOptions"></flot>
-						</div>
+
+<div class="internal-wrapper">
+	<h1>Vote data summary</h1>
+	<div class="row">
+		<div class="col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div style="height:500px">
+						<flot dataset="myData" options="myChartOptions"></flot>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 stats-info">
+		</div>
+		<div class="col-md-3 stats-info">
+			<div>
+				<div class="top">
+					<span class="glyphicon glyphicon-ok sm"></span> {{ voteCount }}
+				</div>
 				<div>
-					<div class="top">
-						<span class="glyphicon glyphicon-ok sm"></span> {{ voteCount }}
-					</div>
-					<div>
-						<span class="glyphicon glyphicon-time sm"></span> {{ timer }}
-					</div>
+					<span class="glyphicon glyphicon-time sm"></span> {{ timer }}
 				</div>
-				<button type="button" class="btn btn-danger pull-left btn-lg stop-btn" ng-click="stopSession()">Stop session</button>
-				<div class="clearfix"></div>
 			</div>
+			<button type="button" class="btn btn-danger pull-left btn-lg stop-btn" ng-click="stopSession()">Stop session</button>
+			<div class="clearfix"></div>
 		</div>
 	</div>
 </div>
+
 

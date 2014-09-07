@@ -11,15 +11,19 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
-/* Space out content a bit */
-body {
-  position: relative;
-  padding-bottom: 20px;
-}
-
 html,body {
   height: 100%;
 }
+
+body {
+  background-color:#55acee;
+}
+
+#flow-container {
+  min-height: 100%;
+  position: relative;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -157,8 +161,6 @@ html,body {
 }
 
 .main-header {
-  width: 100%;
-  background-color: #55acee;
   color: white;
   position: absolute;
 
@@ -195,24 +197,12 @@ html,body {
   }
 }
 
-.page-wrapper {
-  width: 100%;
-  background-color: #55acee;
-  color: white;
-  position: absolute;
-
-  top: 50px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  .internal-wrapper {
+.internal-wrapper {
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
   }
-}
 
 .stats-info {
   > div {
