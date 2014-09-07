@@ -5,7 +5,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 .selected {
-  opacity: 0.5;
+  background-color: #2B75AD !important;
+  color: white !important;
 }
 
 .browsehappy {
