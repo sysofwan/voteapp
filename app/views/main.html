@@ -1,13 +1,16 @@
 <div class="main-header">
 	<div class="container">
+		<div class="alert alert-danger" role="alert" ng-show="error">{{ error }}</div>
 		<h1>Vote for me</h1>
 		<p>I will look at you and be mad.</p>
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<div class="action-chooser">
 					<input type="text" class="form-control" placeholder="Enter session name" ng-model="sessionId">
-					<button type="button" class="btn btn-default btn-info" ng-click="go('/summary/')">Create vote</button>
-					<button type="button" class="btn btn-default btn-info" ng-click="go('/vote/')">Join vote</button>
+					<button type="button" class="btn btn-default btn-info" 
+					ng-click="go('/summary/')">Create vote</button>
+					<button type="button" class="btn btn-default btn-info" 
+					ng-click="go('/vote/')">Join vote</button>
 				</div>
 			</div>
 		</div>

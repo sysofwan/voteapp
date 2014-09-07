@@ -74,7 +74,7 @@ angular.module('voteappApp')
       });
 
       var addVote = function(vote) {
-        if (nodeData.info.stopped) {
+        if (nodeData.info.paused) {
           return;
         }
 
@@ -83,27 +83,29 @@ angular.module('voteappApp')
         sessionNode.child('votes').update(obj);
       };
 
-      var stopSession = function() {
-        if (!nodeData.info.stopped) {
-          nodeData.info.stopped = true;
-          nodeData.info.stoppedTime = Firebase.ServerValue.TIMESTAMP;
+      var pauseSession = function() {
+        if (!nodeData.info.paused) {
+          nodeData.info.paused = true;
+          nodeData.info.pausedTime = new Date().getTime();
           nodeData.$save();
         }
       };
 
-      var sessionStopped = function() {
-        return nodeData.info.stopped;
+      var sessionPaused = function() {
+        return nodeData.info.paused;
       };
 
       var getSecondsLive = function() {
         var created = nodeData.info.timestamp,
             time;
-        if (sessionStopped()) {
-          time = nodeData.info.stoppedTime;
+        if (sessionPaused()) {
+          time = nodeData.info.pausedTime;
         } else {
           time = new Date().getTime();
         }
-        return Math.floor((time - created) / 1000);
+
+        var millsSinceCreated = time - created < 0 ? 0 : time - created;
+        return Math.floor(millsSinceCreated/1000);
       };
 
       var getChoices = function() {
@@ -111,6 +113,25 @@ angular.module('voteappApp')
           return nodeData.info.choices;
         }
         return [];
+      };
+
+      var resumeSession = function() {
+        if (nodeData.info.paused) {
+          nodeData.info.paused = false;
+          nodeData.info.timestamp += new Date().getTime() - nodeData.info.pausedTime;
+          nodeData.$save();
+        }
+      };
+
+      var resetSession = function() {
+        nodeData.votes = 0;
+        nodeData.info.timestamp = 0;
+        nodeData.info.pausedTime = 0;
+        nodeData.$save();
+      };
+
+      var deleteSession = function() {
+        sync.$remove();
       };
 
       return {
@@ -124,10 +145,13 @@ angular.module('voteappApp')
           graphDataChangedCallback = callback;
         },
         addVote: addVote,
-        stopSession: stopSession,
+        pauseSession: pauseSession,
         getSecondsLive: getSecondsLive,
-        sessionStopped: sessionStopped,
-        getChoices: getChoices
+        sessionPaused: sessionPaused,
+        getChoices: getChoices,
+        resumeSession: resumeSession,
+        resetSession: resetSession,
+        deleteSession: deleteSession
       };
     };
   });
