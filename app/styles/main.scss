@@ -298,8 +298,25 @@ body {
 
   }
 
-  
-    
-  
+}
+
+.vote-select {
+  .choose-div {
+    height: 70px;
+    text-align: center;
+    background-color: white;
+    margin-top: 15px;
+    border-radius: 5px;
+    line-height: 70px;
+    font-size: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .selected.choose-div {
+    background-color: #2B75AD;
+    color: white;
+  }
 }
 

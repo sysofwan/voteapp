@@ -1,11 +1,9 @@
 <style>
 
 </style>
-<div class="container">
-	<div class="row">
-		<div class="text-center user-vote">
-			<button ng-repeat="choice in voteNode" type="button" class="btn text-uppercase btn-lg" 
-			ng-class="{'selected':curChoice==choice}" ng-click="onVote(choice)">{{choice}}</button>
-		</div>
+<div class="container vote-select">
+	<div class="row" ng-repeat="choice in voteNode">
+		<div class="col-md-12 choose-div" ng-click="onVote(choice)" 
+		ng-class="{'selected':curChoice==choice}">{{ choice }}</div>
 	</div>
 </div> 
