@@ -77,6 +77,7 @@ angular.module('voteappApp')
         if (nodeData.info.stopped) {
           return;
         }
+
         var obj = {};
         obj[user.getId()] = vote;
         sessionNode.child('votes').update(obj);
