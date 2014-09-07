@@ -39,10 +39,15 @@ angular.module('voteappApp')
         $scope.myChartOptions = {
         	yaxis: {
         		min: 0,
-        		tickDecimals: 0
+        		tickDecimals: 0,
+            tickLength: 0
         	},
           xaxis: {
-            ticks: ticks
+            ticks: ticks,
+            min: 0.3,
+            tickLength:0,
+            max:4.7,
+            tickSize:1.5
           },
           bars: {
             show: true,
@@ -58,11 +63,15 @@ angular.module('voteappApp')
           },
           legend: {
             show: true,
-            nocolumns: 0,
-            position: 'nw'
-
+            noColumns: 4,
+            position: 'nw',
+            margin: 20,
+            labelFormatter: function labelFormatter(label) {
+    return "<div style='font-size:15pt;'>" + label + "</div>";
+            }
           }
         };
+
 
         $scope.voteCount = _.reduce(results, function(memo, arr) {
           return memo + arr[1];
