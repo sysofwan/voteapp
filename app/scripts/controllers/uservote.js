@@ -11,15 +11,19 @@
  .controller('UservoteCtrl', function($scope, $routeParams, $location, voteService) {
   var voteSession = voteService($routeParams.sessionId);
 
-
   voteSession.sessionExists().then(function(exists) {
     if (!exists) {
       $location.path('/');
       return;
     }
+
     voteSession.onVoteResultsChanged(function() {
       $scope.voteNode = voteSession.getChoices();
-      $scope.onVote = voteSession.addVote;
+      $scope.onVote = function(choice) {
+        voteSession.addVote(choice);
+        $scope.curChoice = choice;
+      };
+
     });
   });
 
