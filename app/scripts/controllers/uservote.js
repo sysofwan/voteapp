@@ -33,4 +33,9 @@
     });
   });
 
+  $scope.$on('$destroy', function() {
+    voteSession.onVoteResultsChanged(angular.noop);
+    voteSession = null;
+  });
+
 });
