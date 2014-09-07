@@ -18,8 +18,8 @@
     }
 
     voteSession.onVoteResultsChanged(function() {
-      if (voteSession.sessionStopped()) {
-        $location.path('/').search('error', 'vote session stopped');
+      if (voteSession.sessionPaused()) {
+        $location.path('/').search('error', 'vote session stopped by admin');
         return;
       }
 

@@ -12,16 +12,29 @@
 			</div>
 		</div>
 		<div class="col-md-3 stats-info">
-			<div>
+			<div class="status">
 				<div class="top">
-					<span class="glyphicon glyphicon-ok sm"></span> {{ voteCount }}
+					<span class="glyphicon glyphicon-thumbs-up sm"></span> {{ voteCount }}
 				</div>
 				<div>
 					<span class="glyphicon glyphicon-time sm"></span> {{ timer }}
 				</div>
 			</div>
-			<button type="button" class="btn btn-danger pull-left btn-lg stop-btn" ng-click="stopSession()">Stop session</button>
-			<div class="clearfix"></div>
+			<div class="ctrl-btn">
+				<button type="button" class="btn btn-info btn-lg" 
+				ng-click="pauseSession()" ng-hide="sessionPaused">Pause session</button>
+				<button type="button" class="btn btn-danger btn-lg" 
+				ng-click="pauseSession()" disabled="true" ng-show="sessionPaused">Session paused</button>
+
+				<div class="session-ops" ng-show="sessionPaused">
+					<button type="button" class="btn btn-success btn-lg" 
+					ng-click="resumeSession()">Resume session</button>
+					<button type="button" class="btn btn-warning btn-lg" 
+					ng-click="resetSession()">Reset session</button>
+					<button type="button" class="btn btn-danger btn-lg" 
+					ng-click="deleteSession()">Delete session</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -9,7 +9,7 @@
  */
 
 angular.module('voteappApp')
-  .controller('VotesummaryCtrl', function($scope, $routeParams, voteService, _, $interval) {
+  .controller('VotesummaryCtrl', function($scope, $routeParams, voteService, _, $interval, $location) {
 
     var ticks,
       voteSession = voteService($routeParams.sessionId);
@@ -37,17 +37,17 @@ angular.module('voteappApp')
         });
 
         $scope.myChartOptions = {
-        	yaxis: {
-        		min: 0,
-        		tickDecimals: 0,
+          yaxis: {
+            min: 0,
+            tickDecimals: 0,
             tickLength: 0
-        	},
+          },
           xaxis: {
             ticks: ticks,
             min: 0.3,
-            tickLength:0,
-            max:4.7,
-            tickSize:1.5
+            tickLength: 0,
+            tickSize: 1.5,
+            max: ticks.length + 1
           },
           bars: {
             show: true,
@@ -63,11 +63,11 @@ angular.module('voteappApp')
           },
           legend: {
             show: true,
-            noColumns: 4,
+            noColumns: ticks.length,
             position: 'nw',
             margin: 20,
             labelFormatter: function labelFormatter(label) {
-    return "<div style='font-size:15pt;'>" + label + "</div>";
+              return '<div style=\'font-size:15pt;\'>' + label + '</div>';
             }
           }
         };
@@ -77,18 +77,32 @@ angular.module('voteappApp')
           return memo + arr[1];
         }, 0);
 
-        $scope.stopSession = voteSession.stopSession;
-        $scope.sessionStopped = voteService.sessionStopped;
+        $scope.pauseSession = voteSession.pauseSession;
+        $scope.resumeSession = voteSession.resumeSession;
+        $scope.resetSession = voteSession.resetSession;
+        $scope.deleteSession = function() {
+          voteSession.deleteSession();
+          $location.path('/');
+        };
+
+        $scope.sessionPaused = voteSession.sessionPaused();
 
       });
 
-      $interval(function() {
+      var iId = $interval(function() {
         var timer = voteSession.getSecondsLive();
         var sec = timer % 60;
         var secStr = sec < 10 ? '0' + sec : sec;
-        var minute = Math.floor(timer/60);
+        var minute = Math.floor(timer / 60);
         $scope.timer = minute + ':' + secStr;
       }, 1000);
+
+      $scope.$on('$destroy', function() {
+        if (iId) {
+          $interval.cancel(iId);
+        }
+      });
+      
     });
 
   });

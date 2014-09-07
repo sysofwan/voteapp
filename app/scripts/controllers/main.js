@@ -8,9 +8,9 @@
  * Controller of the voteappApp
  */
 angular.module('voteappApp')
-  .controller('MainCtrl', function($scope, $location) {
+  .controller('MainCtrl', function($scope, $location, $routeParams) {
+    $scope.error = $routeParams.error;
   	$scope.go = function(path) {
-      console.log($scope.sessionId);
   		$location.path(path + $scope.sessionId);
   	};
   	
