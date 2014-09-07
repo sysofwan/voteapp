@@ -24,9 +24,12 @@
       }
 
       $scope.voteNode = voteSession.getChoices();
+      $scope.curChoice = voteSession.getUserVote();
+      console.log($scope.curChoice);
       $scope.onVote = function(choice) {
         voteSession.addVote(choice);
         $scope.curChoice = choice;
+        console.log(choice);
       };
 
     });

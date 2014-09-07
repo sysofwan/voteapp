@@ -137,6 +137,10 @@ angular.module('voteappApp')
         sync.$remove();
       };
 
+      var getUserVote = function() {
+        return nodeData.votes[user.getId()];
+      };
+
       return {
         sessionExists: sessionExists,
         createSession: createSession,
@@ -154,7 +158,8 @@ angular.module('voteappApp')
         getChoices: getChoices,
         resumeSession: resumeSession,
         resetSession: resetSession,
-        deleteSession: deleteSession
+        deleteSession: deleteSession,
+        getUserVote: getUserVote
       };
     };
   });
