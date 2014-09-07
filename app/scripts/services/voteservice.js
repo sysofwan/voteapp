@@ -92,7 +92,10 @@ angular.module('voteappApp')
       };
 
       var sessionPaused = function() {
-        return nodeData.info.paused;
+        if (nodeData.info) {
+          return nodeData.info.paused;  
+        }
+        return false;
       };
 
       var getSecondsLive = function() {
